@@ -5,8 +5,14 @@ class Author(models.Model):
     name = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.name
+
 class ComicBook(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField()
     author = models.ForeignKey(Author)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
