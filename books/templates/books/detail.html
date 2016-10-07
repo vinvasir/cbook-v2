@@ -1,0 +1,10 @@
+{% extends 'books/base.html' %}
+
+{% block content %}
+
+<div class="display-box">
+		<h2>{{ book.title }} by {{ book.author }}</h2>
+		<p>{{ book.description }}</p>
+</div>
+
+{% endblock content %}
