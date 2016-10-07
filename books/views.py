@@ -13,7 +13,7 @@ def new(request):
     if request.method != 'POST':
         form = ComicBookForm()
     else:
-        form = TopicForm(request.POST)
+        form = ComicBookForm(request.POST)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('books:index'))

@@ -1,0 +1,12 @@
+{% extends 'books/base.html' %}
+
+{% block content %}
+
+		<p>Add a new comic book:</p>
+
+		<form action="{% url 'books:new' %}" method="post">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<button name="submit">Create book</button>
+		</form>
+{% endblock content %}

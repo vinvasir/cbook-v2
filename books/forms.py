@@ -1,8 +1,8 @@
 from django import forms
 from .models import ComicBook, Author
 
-class ComicBookForm(forms.Form):
+class ComicBookForm(forms.ModelForm):
     class Meta:
         model = ComicBook
-        fields = ['title', 'description',]
-        labels = {'title': 'title', 'description': 'description',}
+        fields = ['title', 'description', 'author',]
+        labels = {'title': 'title', 'description': 'description', 'author': 'author'}
