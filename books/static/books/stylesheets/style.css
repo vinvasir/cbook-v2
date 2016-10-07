@@ -1,38 +1,18 @@
 /* background image */
 
 body {
-    background: url('../images/bg.png');    
+  background: url('../images/bg.png');    
 }
 
-/* top navbar */
+/* top navbar  */
 
-ul.top-nav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background: url('../images/stardust.png');
-}
-
-.top-nav li {
-    float: left;
-}
-
-.top-nav li.right {
-    float: right;
-}
-
-.top-nav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+nav {
+  background: url('../images/stardust.png');  
 }
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-    background-color: #111;
+  background-color: #111;
 }
 
 /* a box for displaying text elements grouped by database records */
