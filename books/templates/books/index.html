@@ -3,9 +3,11 @@
 		<h1>All Comic Books</h1>
 
 		{% for book in books %}
+		<a href="{% url 'books:detail' book.id %}">
 			<div class="display-box">
 				<h2>{{ book.title }} by {{ book.author }}</h2>
 				<p>{{ book.description }}</p>
 			</div>
+		</a>
 		{% endfor %}
 {% endblock content %}
