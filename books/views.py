@@ -9,6 +9,11 @@ def index(request):
     context = {'books': ComicBook.objects.all()}
     return render(request, 'books/index.html', context)
 
+def detail(request, comic_book_id):
+    book = ComimcBook.objects.get(id=comic_book_id)
+    context = {'book': book}
+    return render(request, 'books/detail.html', context)
+
 def new(request):
     if request.method != 'POST':
         form = ComicBookForm()
