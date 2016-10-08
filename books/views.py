@@ -5,6 +5,9 @@ from django.core.urlresolvers import reverse
 from .models import Author, ComicBook
 from .forms import ComicBookForm
 # Create your views here.
+def home(request):
+    return render(request, 'books/home.html')
+
 def index(request):
     context = {'books': ComicBook.objects.all()}
     return render(request, 'books/index.html', context)
