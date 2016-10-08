@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 
 from .models import Author, ComicBook
 from .forms import ComicBookForm
@@ -17,6 +18,7 @@ def detail(request, comic_book_id):
     context = {'book': book}
     return render(request, 'books/detail.html', context)
 
+@login_required
 def new(request):
     if request.method != 'POST':
         form = ComicBookForm()
