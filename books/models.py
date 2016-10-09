@@ -23,4 +23,7 @@ class Review(models.Model):
     rating = models.IntegerField()
     comic_book = models.ForeignKey(ComicBook)
     user = models.ForeignKey(User)
-    created_at = models.DateTimeField(auto_now_add=True)    
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.content
