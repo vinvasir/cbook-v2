@@ -34,6 +34,10 @@ def new(request):
     context = {'form': form}
     return render(request, 'books/new.html', context)
 
+class BookList(generics.ListCreateAPIView):
+    queryset = ComicBook.objects.all()
+    serializer_class = ComicBookSerializer
+
 class AuthorList(generics.ListCreateAPIView):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
