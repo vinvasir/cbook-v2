@@ -3,11 +3,17 @@ angular
 	.config(function($stateProvider){
 		$stateProvider
 			.state('home', {
-				url: '/home',
+				url: '/',
 				templateUrl: 'js/templates/home.html'
 			})
 			.state('books', {
 				url: '/books',
-				templateUrl: 'js/templates/books.html'
+				templateUrl: 'js/templates/books.html',
+				controller: 'BooksController as bookie',
+				resolve: {
+					book: function($http, $stateParams) {
+						return $http.get('http://127.0.0.1:8000/books/json')
+					}
+				}
 			})
 	});
