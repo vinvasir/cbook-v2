@@ -1,9 +1,9 @@
-function BooksController($http, book){
+function BooksController(book, $http){
 	var bookCtrl = this;
 
-	bookCtrl.bookData = book.data;
+	this.bookData = book.data;
 }
 
 angular
 	.module('app')
-	.controller('BooksController', BooksController)
+	.controller('BooksController', BooksController);
