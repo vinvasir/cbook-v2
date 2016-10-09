@@ -45,4 +45,4 @@ class BookReviewList(generics.ListCreateAPIView):
 
     def get_queryset(self):
         queryset = super(BookReviewList, self).get_queryset()
-        return queryset.filter(comic_book__pk = self.kwargs.get('pk'))
+        return queryset.filter(comic_book__pk = self.kwargs.get('comic_book_id'))
