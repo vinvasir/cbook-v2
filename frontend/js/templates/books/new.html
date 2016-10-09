@@ -1,3 +1,16 @@
 <h3>New book preview:</h3>
 
-{{ }}
+{{ (bookCtrl.bookData.length + 1) + ": " + bookCtrl.newBook.title }}
+
+<form name="form" ng-submit="bookCtrl.addTask()">
+		<label>Title:</label>
+		<input ng-model="bookCtrl.newBook.title"></input><br />
+
+		<label>Description:</label>
+		<input ng-model="bookCtrl.newBook.description"></input><br />
+
+		<label> Author:</label>
+		<input ng-model="bookCtrl.newBook.author"></input><br />
+
+		<button type="submit">Add book</button>
+</form>
