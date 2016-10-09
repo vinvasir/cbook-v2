@@ -2,11 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
-from rest_framework.views import APIView
-from rest_framework.views import Response
-from .serializers import AuthorSerializer
+from rest_framework import generics
 
 from .models import Author, ComicBook
+from .serializers import AuthorSerializer
 from .forms import ComicBookForm
 # Create your views here.
 
@@ -35,15 +34,6 @@ def new(request):
     context = {'form': form}
     return render(request, 'books/new.html', context)
 
-class AuthorList(APIView):
-    def get(self, request, format=None):
-        authors = Author.objects.all()
-        serializer = AuthorSerializer(authors, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = AuthorSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class AuthorList(generics.ListCreateAPIView):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
