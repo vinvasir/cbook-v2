@@ -1,23 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
+from rest_framework.views import APIView
+from rest_framework.views import Response
 from .serializers import AuthorSerializer
 
 from .models import Author, ComicBook
 from .forms import ComicBookForm
 # Create your views here.
-
-class JSONResponse(HttpResponse):
-    """
-    An HttpResponse that renders its content into JSON.
-    """
-    def __init__(self, data, **kwargs):
-        content = JSONRenderer().render(data)
-        kwargs['content_type'] = 'application/json'
-        super(JSONResponse, self).__init__(content, **kwargs)
 
 def home(request):
     return render(request, 'books/home.html')
@@ -44,19 +35,15 @@ def new(request):
     context = {'form': form}
     return render(request, 'books/new.html', context)
 
-def author_list(request):
-    """
-    List all authors, or create a new author.
-    """
-    if request.method == 'GET':
+class AuthorList(APIView):
+    def get(self, request, format=None):
         authors = Author.objects.all()
         serializer = AuthorSerializer(authors, many=True)
-        return JSONResponse(serializer.data)
+        return Response(serializer.data)
 
-    elif request.method == 'POST':
-        data = JSONParser().parse(request)
-        serializer = AuthorSerializer(data=data)
+    def post(self, request, format=None):
+        serializer = AuthorSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return JSONResponse(serializer.data, status=201)
-        return JSONResponse(serializer.errors, status=400)    
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
