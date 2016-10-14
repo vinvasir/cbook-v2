@@ -11,8 +11,8 @@ angular
 				templateUrl: 'js/templates/books/list.html',
 				controller: 'BooksController as bookCtrl',
 				resolve: {
-					book: function($http, $stateParams) {
-						return $http.get('http://127.0.0.1:8000/books/json');
+					book: function($stateParams, BookService) {
+						return BookService.getBooks();
 					}
 				}
 			})
