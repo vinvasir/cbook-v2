@@ -20,4 +20,13 @@ angular
 				url: '/books/new',
 				templateUrl: 'js/templates/books/new.html'
 			})
+			.state('book', {
+				url: '/books/:id',
+				templateUrl: 'js/templates/books/show.html',
+				resolve: {
+					book: function($stateParams, BookService) {
+						return BookService.getBook($stateParams.id);
+					}
+				}
+			})
 	});
