@@ -46,6 +46,10 @@ class AuthorList(generics.ListCreateAPIView):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
 
+class AuthorDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+
 class BookReviewList(generics.ListCreateAPIView):
     model = Review
     queryset = Review.objects.all()
