@@ -1,4 +1,4 @@
-function BookService($http){
+function BookService($http, AuthorService){
 	this.getBooks = function(){
 		return $http.get('http://127.0.0.1:8000/books/json');
 	};
@@ -11,4 +11,4 @@ function BookService($http){
 
 angular
 	.module('app')
-	.service('BookService', BookService)
+	.service('BookService', BookService);

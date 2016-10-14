@@ -1,7 +1,11 @@
-function BooksController(book, $http){
+function BooksController(book, $http, AuthorService){
 	var bookCtrl = this;
 
 	this.bookData = book.data;
+
+	if(this.bookData.author > 0){
+		this.bookData.author = AuthorService.getAuthor(this.bookData.author);
+	}
 
 	this.newBook = {};
 
