@@ -2,9 +2,9 @@
 
 <ul>
 		<li ng-repeat="book in bookCtrl.bookData">
-				<p>{{ book.pk + ": " + book.title }}<p>
+				<a href="" ui-sref="book({id: book.pk})"><p>{{ book.pk + ": " + book.title }}</p></a>
 		</li>
-</p>
+</ul>
  
 <p><a href="" ui-sref="books.new">Add a book</a></p>
 
