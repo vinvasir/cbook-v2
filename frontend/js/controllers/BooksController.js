@@ -3,8 +3,8 @@ function BooksController(book, $http, AuthorService){
 
 	this.bookData = book.data;
 
-	if(this.bookData.author > 0){
-		this.bookData.author = AuthorService.getAuthor(this.bookData.author);
+	if(this.bookData.author > 1){
+		bookCtrl.bookData.author = AuthorService.getAuthor(this.bookData.author);
 	}
 
 	this.newBook = {};
