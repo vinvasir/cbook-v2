@@ -38,6 +38,10 @@ class BookList(generics.ListCreateAPIView):
     queryset = ComicBook.objects.all()
     serializer_class = ComicBookSerializer
 
+class BookDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ComicBook.objects.all()
+    serializer_class = ComicBookSerializer
+
 class AuthorList(generics.ListCreateAPIView):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
