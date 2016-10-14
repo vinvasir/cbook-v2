@@ -4,7 +4,7 @@ function BookService($http){
 	}
 
 	this.getBook = function(id){
-		return $http.get('http://127.0.0.1:8000/books/json/' + id);
+		return $http.get('http://127.0.0.1:8000/books/' + id + '/json/');
 	}
 }
 

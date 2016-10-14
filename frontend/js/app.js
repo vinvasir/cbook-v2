@@ -23,6 +23,7 @@ angular
 			.state('book', {
 				url: '/books/:id',
 				templateUrl: 'js/templates/books/show.html',
+				controller: 'BooksController as bookCtrl',
 				resolve: {
 					book: function($stateParams, BookService) {
 						return BookService.getBook($stateParams.id);
