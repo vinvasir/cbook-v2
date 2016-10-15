@@ -1,4 +1,4 @@
-from .models import Author, ComicBook, Review
+from .models import Author, Genre, ComicBook, Review
 from rest_framework import serializers
 
 # A custom SlugRelatedField for creating a new object if one doesn't exist.
@@ -13,6 +13,11 @@ class CreatableSlugRelatedField(serializers.SlugRelatedField):
         except (TypeError, ValueError):
             self.fail('invalid')
 
+class GenreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Genre
+        fields = ('pk', 'name')
+
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
@@ -20,10 +25,11 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 class ComicBookSerializer(serializers.ModelSerializer):
     author = CreatableSlugRelatedField(slug_field='name', queryset=Author.objects.all())
+    genres = CreatableSlugRelatedField(slug_field='name', many=True, queryset=Genre.objects.all())
 
     class Meta:
         model = ComicBook
-        fields = ('pk', 'title', 'description', 'author')
+        fields = ('pk', 'title', 'description', 'genres', 'author')
 
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
