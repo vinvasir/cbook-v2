@@ -7,6 +7,8 @@ class AuthorSerializer(serializers.ModelSerializer):
         fields = ('pk', 'name', 'created_at')
 
 class ComicBookSerializer(serializers.ModelSerializer):
+    author = serializers.StringRelatedField()
+
     class Meta:
         model = ComicBook
         fields = ('pk', 'title', 'description', 'author')
