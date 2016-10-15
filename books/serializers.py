@@ -7,7 +7,7 @@ class AuthorSerializer(serializers.ModelSerializer):
         fields = ('pk', 'name', 'created_at')
 
 class ComicBookSerializer(serializers.ModelSerializer):
-    author = serializers.StringRelatedField()
+    author = serializers.SlugRelatedField(slug_field='name', queryset=Author.objects.all())
 
     class Meta:
         model = ComicBook
