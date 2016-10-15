@@ -2,6 +2,9 @@ from django.db import models
 
 from django.contrib.auth.models import User
 # Create your models here.
+class Genre(models.Model):
+    name = models.CharField(max_length=50)
+
 class Author(models.Model):
     name = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -13,6 +16,7 @@ class ComicBook(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField()
     author = models.ForeignKey(Author)
+    genres = models.ManyToManyField(Genre)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -27,6 +31,3 @@ class Review(models.Model):
 
     def __str__(self):
         return self.content
-
-class Genre(models.Model):
-    name = models.CharField(max_length=50)
