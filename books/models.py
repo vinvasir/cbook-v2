@@ -27,3 +27,6 @@ class Review(models.Model):
 
     def __str__(self):
         return self.content
+
+class Genre(models.Model):
+    name = models.CharField(max_length=50)
