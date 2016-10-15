@@ -11,7 +11,7 @@ function BooksController(book, $http, AuthorService){
 			.post('http://127.0.0.1:8000/books/json/', bookCtrl.newBook)
 			.then(function(res){
 				console.log(res.data);
-				bookCtrl.data.push(res.data);
+				bookCtrl.bookData.push(res.data);
 			});
 		
 		bookCtrl.newTask = {};			
