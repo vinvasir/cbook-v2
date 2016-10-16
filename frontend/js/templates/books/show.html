@@ -1,2 +1,7 @@
 <h1>{{ bookCtrl.bookData.title }} by {{ bookCtrl.bookData.author }}</h1>
+<h3>Genres: 
+	<ul>
+		<li ng-repeat="genre in bookCtrl.bookData.genres">{{ genre.name }}</li>
+	</ul>
+</h3>
 <p>{{ bookCtrl.bookData.description }}</p>
