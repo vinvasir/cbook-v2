@@ -3,7 +3,9 @@ function BooksController(book, $http, AuthorService){
 
 	this.bookData = book.data;
 
-	this.newBook = {};
+	this.newBook = {
+		genres: []
+	};
 
 	this.addBook = function(){
 		console.log(bookCtrl.newBook);
@@ -14,7 +16,9 @@ function BooksController(book, $http, AuthorService){
 				bookCtrl.bookData.push(res.data);
 			});
 		
-		bookCtrl.newBook = {};			
+		bookCtrl.newBook = {
+			genres: []
+		};			
 	};
 }
 
