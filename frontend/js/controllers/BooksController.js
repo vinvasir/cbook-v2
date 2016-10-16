@@ -14,7 +14,7 @@ function BooksController(book, $http, AuthorService){
 				bookCtrl.bookData.push(res.data);
 			});
 		
-		bookCtrl.newTask = {};			
+		bookCtrl.newBook = {};			
 	};
 }
 
