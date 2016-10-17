@@ -3,12 +3,11 @@ function BooksController(book, $http, AuthorService){
 
 	this.bookData = book.data;
 
-	this.newBook = {
-		genres: []
-	};
+	this.newBook = {genres: []};
 
 	this.addBook = function(){
 		console.log(bookCtrl.newBook);
+		debugger;
 		$http
 			.post('http://127.0.0.1:8000/books/json/', bookCtrl.newBook)
 			.then(function(res){
@@ -16,9 +15,7 @@ function BooksController(book, $http, AuthorService){
 				bookCtrl.bookData.push(res.data);
 			});
 		
-		bookCtrl.newBook = {
-			genres: []
-		};			
+		bookCtrl.newBook = {genres: []};			
 	};
 }
 
