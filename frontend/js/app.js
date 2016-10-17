@@ -18,7 +18,12 @@ angular
 			})
 			.state('books.new', {
 				url: '/books/new',
-				templateUrl: 'js/templates/books/new.html'
+				templateUrl: 'js/templates/books/new.html',
+				resolve: {
+					genres: function(GenreSevice) {
+						
+					}
+				}
 			})
 			.state('book', {
 				url: '/books/:id',
