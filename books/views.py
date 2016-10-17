@@ -4,8 +4,8 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from rest_framework import generics
 
-from .models import Author, ComicBook, Review
-from .serializers import AuthorSerializer, ComicBookSerializer, ReviewSerializer
+from .models import Author, Genre, ComicBook, Review
+from .serializers import AuthorSerializer, GenreSerializer, ComicBookSerializer, ReviewSerializer
 from .forms import ComicBookForm
 # Create your views here.
 
@@ -37,6 +37,10 @@ def new(request):
 class BookList(generics.ListCreateAPIView):
     queryset = ComicBook.objects.all()
     serializer_class = ComicBookSerializer
+
+class GenreList(generics.ListCreateAPIView):
+    queryset = Genre.objects.all()
+    serializer_class = GenreSerializer
 
 class BookDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = ComicBook.objects.all()
