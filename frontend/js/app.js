@@ -20,8 +20,8 @@ angular
 				url: '/books/new',
 				templateUrl: 'js/templates/books/new.html',
 				resolve: {
-					genres: function(GenreSevice) {
-						
+					genres: function(GenreService) {
+						return GenreService.getGenres();
 					}
 				}
 			})
