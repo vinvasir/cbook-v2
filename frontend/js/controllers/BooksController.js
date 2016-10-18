@@ -1,12 +1,17 @@
-function BooksController(book, $http, AuthorService, genres){
+function BooksController(book, $http, AuthorService, GenreService){
 	var bookCtrl = this;
 
 	this.bookData = book.data;
 
-	if(genres){
-		this.genres = genres.data;
-	}
+	GenreService.getGenres()
+		.then(function(response){
+			console.log(response)
+			debugger;
+			bookCtrl.possibleGenres = response.data;
+		});
 
+	debugger;
+	
 	this.newBook = {genres: []};
 
 	this.addBook = function(){

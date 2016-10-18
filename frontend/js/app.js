@@ -18,12 +18,7 @@ angular
 			})
 			.state('books.new', {
 				url: '/books/new',
-				templateUrl: 'js/templates/books/new.html',
-				resolve: {
-					genres: function(GenreService) {
-						return GenreService.getGenres();
-					}
-				}
+				templateUrl: 'js/templates/books/new.html'
 			})
 			.state('book', {
 				url: '/books/:id',
