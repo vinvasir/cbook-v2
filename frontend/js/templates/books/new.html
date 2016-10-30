@@ -12,10 +12,10 @@
 		<input ng-model="bookCtrl.newBook.description"></input><br />
 
 		<label>Select some Genres:</label>
-		<select ng-options="genre as genre.name for genre in bookCtrl.genreData" ng-model="bookCtrl.newBook.genres" multiple></select><br />
+		<select ng-options="genre.name as genre.name for genre in bookCtrl.genreData" ng-model="bookCtrl.newBook.genres" multiple></select><br />
 
 		<label>Or create a new one:</label>
-		<input ng-model="bookCtrl.newBook.genres[-1]"></form><br />
+		<input ng-model="bookCtrl.newBook.newGenre"></input><br />
 
 		<label> Author:</label>
 		<input ng-model="bookCtrl.newBook.author"></input><br />

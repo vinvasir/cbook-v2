@@ -10,6 +10,7 @@ function BooksController(book, genre, $http){
 	this.newBook = {genres: []};
 
 	this.addBook = function(){
+		bookCtrl.newBook.genres.push(bookCtrl.newBook.newGenre);
 		console.log(bookCtrl.newBook);
 		$http
 			.post('http://127.0.0.1:8000/books/json/', bookCtrl.newBook)
