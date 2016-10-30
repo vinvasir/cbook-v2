@@ -1,22 +1,14 @@
-function BooksController(book, $http, AuthorService, GenreService){
+function BooksController(book, genre, $http){
 	var bookCtrl = this;
 
 	this.bookData = book.data;
 
-	GenreService.getGenres()
-		.then(function(response){
-			console.log(response)
-			debugger;
-			bookCtrl.possibleGenres = response.data;
-		});
-
-	debugger;
+	this.genreData = genre.data;
 	
 	this.newBook = {genres: []};
 
 	this.addBook = function(){
 		console.log(bookCtrl.newBook);
-		debugger;
 		$http
 			.post('http://127.0.0.1:8000/books/json/', bookCtrl.newBook)
 			.then(function(res){

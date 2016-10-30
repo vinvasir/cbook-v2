@@ -13,6 +13,9 @@ angular
 				resolve: {
 					book: function($stateParams, BookService) {
 						return BookService.getBooks();
+					},
+					genre: function(GenreService) {
+						return GenreService.getGenres();
 					}
 				}
 			})
