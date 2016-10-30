@@ -3,7 +3,9 @@ function BooksController(book, genre, $http){
 
 	this.bookData = book.data;
 
-	this.genreData = genre.data;
+	if(genre.data) {
+		this.genreData = genre.data;
+	}
 	
 	this.newBook = {genres: []};
 
